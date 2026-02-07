@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "📈 週次データ分析（手動実行）",
+  "description": "週次でMCP経由のデータ取得と分析を実行し、改善PBIを自動生成",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "data-sync-agent",
+    "prompt": "週次データ分析を開始します。\n\n# 実行内容\n\n## 1. データ取得（MCP経由）\n\n- Notion: プロジェクト進捗、PBIステータス、スプリントベロシティ\n- GitHub: Issue、PR、コミット履歴\n- その他: 利用可能なMCPデータソース\n\n## 2. データ正規化と保存\n\n- `docs/data/notion-sync.json`\n- `docs/data/github-metrics.json`\n- `docs/data/kpi-summary.json`\n\n## 3. 次のアクション\n\n完了後、@analyst-agent を呼び出して以下を実行：\n\n- KPI分析\n- トレンド分析\n- 改善提案の生成\n- 改善PBIの自動生成\n\n分析レポートは `docs/analysis/{date}-weekly-report.md` に保存してください。"
+  }
+}

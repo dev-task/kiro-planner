@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "📊 データファイル自動取り込み",
+  "description": "docs/data/配下にデータファイルが追加されたら自動的に取り込み、分析を実行",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": ["docs/data/*.csv", "docs/data/*.json", "docs/data/*.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "data-sync-agent",
+    "prompt": "新しいデータファイルが追加されました。以下を実行してください：\n\n1. データファイルの読み込みと正規化\n2. データ品質チェック\n3. 分析用データセットの生成\n4. データ取り込みレポートの作成\n\n完了後、@analyst-agent を呼び出してKPI分析を実行してください。"
+  }
+}

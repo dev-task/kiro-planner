@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "③ 価値・体験整理",
+  "description": "UJM/インセプションデッキ作成、ユーザー行動の時系列整理を実行",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": ["docs/scope/*-scope.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "value-experience-agent",
+    "prompt": "企画スコープ定義が完了しました。次のステップとして価値・体験整理を開始してください。\n\n以下を作成してください：\n1. ユーザージャーニーマップ（UJM）\n2. 成功体験（Aha Moment）\n3. 失敗体験（離脱ポイント）\n4. インセプションデッキ\n\n完了したら `docs/experience/{project-name}-ujm.md` を作成してください。"
+  }
+}

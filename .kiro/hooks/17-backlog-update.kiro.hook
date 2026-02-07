@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "✏️ バックログ修正",
+  "description": "バックログの優先順位変更、PBI追加/削除、見積もり変更を実施",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "sprint-agent",
+    "prompt": "バックログ修正を開始します。\n\n# 実行内容\n\n## 1. 修正内容の確認\n\nユーザーに修正内容を質問：\n\n### 修正タイプ\n- [ ] 優先順位変更\n- [ ] PBI追加\n- [ ] PBI削除\n- [ ] 見積もり変更\n- [ ] 受入条件変更\n- [ ] その他\n\n### 詳細\n- 対象PBI ID（変更/削除の場合）\n- 新しい値\n- 変更理由\n\n## 2. 影響範囲分析\n\n修正による影響を分析：\n\n- 依存関係への影響\n- スプリント計画への影響\n- 他のPBIへの影響\n- リソース配分への影響\n\n## 3. バックログ更新\n\n- バックログファイルの更新\n- PBI JSONの更新\n- 変更履歴の記録\n\n## 4. 変更レポート生成\n\n`docs/backlog/{project}-change-log-{date}.md` を生成\n\n```markdown\n# バックログ変更ログ: {date}\n\n## 変更内容\n\n- 変更タイプ: {type}\n- 対象PBI: {id}\n- 変更前: {before}\n- 変更後: {after}\n- 理由: {reason}\n\n## 影響範囲\n\n- 影響を受けるPBI: X件\n- スプリント計画への影響: {description}\n\n## 推奨アクション\n\n- [ ] アクション1\n- [ ] アクション2\n```\n\n## 5. Notion同期\n\n完了後、@integration-agent を呼び出してNotion同期を実行してください。"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "① 事業・課題インプット",
+  "description": "新規プロジェクトの事業課題明文化、ターゲット定義、KGI/KPI設定を開始",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "business-input-agent",
+    "prompt": "新規プロジェクトの事業・課題インプットを開始してください。\n\nユーザーに以下を質問して情報を収集してください：\n1. プロジェクト名\n2. 解くべき事業課題\n3. ターゲットユーザー\n4. 成功指標（KGI/KPI）\n5. 制約条件（期間・予算・体制）\n\n情報が揃ったら `docs/input/{project-name}-business-input.md` を作成してください。"
+  }
+}

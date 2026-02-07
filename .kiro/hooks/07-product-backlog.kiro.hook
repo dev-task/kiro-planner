@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "⑦ プロダクトバックログ作成",
+  "description": "要件をバックログアイテム化、優先度付け、依存関係整理を実行",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": ["docs/prd/*-prd.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "product-backlog-agent",
+    "prompt": "PRD作成が完了しました。次のステップとしてプロダクトバックログ作成を開始してください。\n\n以下を実施してください：\n1. 要件をバックログアイテム化（エピック/ユーザーストーリー/タスク）\n2. ビジネス価値で優先度付け\n3. MVP順に並び替え\n4. 依存関係の整理\n5. スプリント計画（案）作成\n\n完了したら `docs/backlog/{project-name}-backlog.md` を作成してください。"
+  }
+}

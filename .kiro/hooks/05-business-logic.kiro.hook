@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "⑤ 業務ロジック整理",
+  "description": "トリガー、主体、判定条件、処理内容、状態変化の定義を実行",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": ["docs/process/*-business-process.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "business-logic-agent",
+    "prompt": "業務洗い出しが完了しました。次のステップとして業務ロジック整理を開始してください。\n\n各業務について以下を定義してください：\n1. トリガー（何をきっかけに開始するか）\n2. 主体（誰がやるか）\n3. 判定条件（どんな条件で分岐するか）\n4. 処理内容（何をするか）\n5. 状態変化（結果どうなるか）\n6. 重要な分岐・例外\n\n完了したら `docs/logic/{project-name}-business-logic.md` を作成してください。"
+  }
+}

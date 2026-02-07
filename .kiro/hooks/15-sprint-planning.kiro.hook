@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "🎯 スプリント計画",
+  "description": "ベロシティに基づくPBI選択、スプリントゴール設定、タスク分解を実施",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "sprint-agent",
+    "prompt": "スプリント計画を開始します。\n\n# 実行内容\n\n## 1. 情報収集\n\nユーザーに以下を質問：\n\n1. プロジェクト名\n2. スプリント番号\n3. スプリント期間（例: 2週間）\n4. チームベロシティ（前回スプリント実績、不明な場合は推定）\n5. チームメンバー数\n\n## 2. PBI選択\n\n- バックログから優先度順にPBIを選択\n- 合計SPがベロシティ以内になるように調整\n- 依存関係を考慮\n\n## 3. スプリントゴール設定\n\n選択したPBIから、スプリントで達成すべきゴールを明確化\n\n## 4. タスク分解\n\n各PBIを実装可能なタスクに分解：\n\n- 設計タスク\n- 実装タスク\n- テストタスク\n- レビュータスク\n\n## 5. スプリント計画書生成\n\n`docs/sprint/{project}-sprint-{number}-plan.md` を生成\n\n## 6. Notion同期\n\n完了後、@integration-agent を呼び出してNotionのスプリントフィールドを更新してください。"
+  }
+}

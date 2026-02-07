@@ -1,0 +1,15 @@
+{
+  "enabled": true,
+  "name": "④ 業務洗い出し",
+  "description": "ユーザー業務・運営業務の列挙、自動化/人対応の分類を実行",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": ["docs/experience/*-ujm.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "business-process-agent",
+    "prompt": "価値・体験整理が完了しました。次のステップとして業務洗い出しを開始してください。\n\n以下を列挙してください：\n1. ユーザー業務一覧\n2. 運営業務一覧（CS・運用）\n3. 自動化/人対応の分類\n4. 通常系/例外系の分類\n\n完了したら `docs/process/{project-name}-business-process.md` を作成してください。"
+  }
+}

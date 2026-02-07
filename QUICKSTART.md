@@ -1,149 +1,284 @@
-# クイックスタート
+# AI-DLC クイックスタートガイド
 
-AI-DLC を 5 分で始める
+このガイドでは、AI-DLCを使ってプロダクト企画業務を自動化する手順を説明します。
 
-## 1. 環境変数の設定
+## 前提条件
+
+- Kiro がインストールされていること
+- Notion API キーが設定されていること（Notion連携を使う場合）
+
+## 2つの企画アプローチ
+
+AI-DLCは、プロジェクトの性質に応じて2つのアプローチを提供します：
+
+### A. 戦略立案アプローチ（トップダウン）
+
+**こんな時に使う：**
+
+- 新規事業の立ち上げ
+- 大規模プロジェクトの企画
+- 市場分析から始めたい場合
+- 戦略的な意思決定が必要な場合
+
+**フロー：** 戦略立案 → PRD作成 → バックログ生成 → Notion登録
+
+### B. 企画業務フロー（8ステップ）
+
+**こんな時に使う：**
+
+- 既存事業の改善
+- 機能追加・拡張
+- 業務フローが明確な場合
+- ボトムアップで要件を整理したい場合
+
+**フロー：** ① 事業・課題インプット → ② 企画スコープ定義 → ... → ⑧ PBI粒度への分解 → Notion登録
+
+---
+
+## アプローチA: 戦略立案（トップダウン）
+
+### ステップ1: 戦略立案の開始
+
+#### 方法A: Hook UIから実行
+
+1. Kiroのコマンドパレットを開く（`Cmd+Shift+P` / `Ctrl+Shift+P`）
+2. "Open Kiro Hook UI"を検索して選択
+3. "🚀 新規プロジェクト戦略立案"を実行
+
+#### 方法B: チャットから実行
+
+Kiroのチャットで以下を入力：
+
+```
+@strategy-agent 新規プロジェクトの戦略立案を開始
+```
+
+### ステップ2: 4階層フレームワークで対話
+
+エージェントが4階層フレームワークに基づいて質問します：
+
+1. **Layer 1: Core** - Mission/Vision、競争優位性
+2. **Layer 2: Why** - ターゲット、市場規模、ペイン/ゲイン
+3. **Layer 3: What** - ユーザージャーニー、ビジネスモデル
+4. **Layer 4: How** - 実行計画、技術スタック、GTM戦略
+
+### ステップ3: 自動フローの実行
+
+戦略ドキュメント完成後、以下が自動実行されます：
+
+```
+戦略立案 (docs/strategy/)
+  ↓ 自動実行
+PRD作成 (docs/prd/)
+  ↓ 自動実行
+バックログ生成 (docs/backlog/ + docs/pbi/)
+  ↓ 自動実行
+Notion登録
+```
+
+### ステップ4: 成果物の確認
+
+```
+docs/
+├── strategy/
+│   └── {project-name}-strategy.md         # 戦略ドキュメント
+├── prd/
+│   └── {project-name}-prd.md              # PRD
+├── backlog/
+│   └── {project-name}-backlog.md          # プロダクトバックログ
+└── pbi/
+    ├── {project-name}-pbi.md              # PBI詳細（Markdown）
+    └── {project-name}-pbi.json            # PBI詳細（JSON）
+```
+
+---
+
+## アプローチB: 企画業務フロー（8ステップ）
+
+### ステップ1: 事業・課題インプットの開始
+
+#### 方法A: Hook UIから実行
+
+1. Kiroのコマンドパレットを開く（`Cmd+Shift+P` / `Ctrl+Shift+P`）
+2. "Open Kiro Hook UI"を検索して選択
+3. "① 事業・課題インプット"を実行
+
+#### 方法B: チャットから実行
+
+Kiroのチャットで以下を入力：
+
+```
+@business-input-agent 新規プロジェクトの事業・課題インプットを開始
+```
+
+### ステップ2: 質問に回答
+
+エージェントが以下の情報を質問します：
+
+1. **プロジェクト名**: 例）新規ECサイト
+2. **解くべき事業課題**: 例）既存顧客のリピート率が低い
+3. **ターゲットユーザー**: 例）30-40代の女性、年収500万円以上
+4. **成功指標（KGI/KPI）**: 例）KGI: 年間売上1億円、KPI: リピート率30%
+5. **制約条件**: 例）期間: 6ヶ月、予算: 3000万円、体制: 5名
+
+### ステップ3: 自動フローの実行
+
+情報を入力すると、以下のフローが自動的に実行されます：
+
+```
+① 事業・課題インプット
+  ↓ 自動実行
+② 企画スコープ定義
+  ↓ 自動実行
+③ 価値・体験整理（UJM作成）
+  ↓ 自動実行
+④ 業務洗い出し
+  ↓ 自動実行
+⑤ 業務ロジック整理
+  ↓ 自動実行
+⑥ 要件レベルへの翻訳（PRD作成）
+  ↓ 自動実行
+⑦ プロダクトバックログ作成
+  ↓ 自動実行
+⑧ PBI粒度への分解
+  ↓ 自動実行
+Notion登録
+```
+
+### ステップ4: 成果物の確認
+
+各ステップで以下のファイルが生成されます：
+
+```
+docs/
+├── input/
+│   └── {project-name}-business-input.md      # ① 事業・課題インプット
+├── scope/
+│   └── {project-name}-scope.md                # ② 企画スコープ定義
+├── experience/
+│   └── {project-name}-ujm.md                  # ③ UJM/インセプションデッキ
+├── process/
+│   └── {project-name}-business-process.md     # ④ 業務洗い出し
+├── logic/
+│   └── {project-name}-business-logic.md       # ⑤ 業務ロジック整理
+├── prd/
+│   └── {project-name}-prd.md                  # ⑥ PRD
+├── backlog/
+│   └── {project-name}-backlog.md              # ⑦ プロダクトバックログ
+└── pbi/
+    ├── {project-name}-pbi.md                  # ⑧ PBI詳細（Markdown）
+    └── {project-name}-pbi.json                # ⑧ PBI詳細（JSON）
+```
+
+---
+
+## どちらのアプローチを選ぶべきか？
+
+### 戦略立案アプローチ（A）を選ぶ場合
+
+- ✅ 新規事業・新規プロダクトの立ち上げ
+- ✅ 市場分析から始める必要がある
+- ✅ 競合分析や差別化戦略が重要
+- ✅ 投資家向けピッチが必要
+- ✅ トップダウンで戦略を固めたい
+
+### 企画業務フロー（B）を選ぶ場合
+
+- ✅ 既存プロダクトの機能追加・改善
+- ✅ 業務フローが明確
+- ✅ ユーザー業務の理解が重要
+- ✅ 業務ロジックの詳細化が必要
+- ✅ ボトムアップで要件を整理したい
+
+---
+
+## Notionで確認
+
+Notion連携が設定されている場合、以下のデータベースに自動登録されます：
+
+- **プロジェクトDB**: プロジェクト情報
+- **エピックDB**: エピック一覧
+- **PBI DB**: プロダクトバックログアイテム
+
+---
+
+## 途中から再開する場合
+
+### 戦略立案アプローチ
 
 ```bash
-# Notion API Key（必須）
-export NOTION_API_KEY="secret_xxxxxxxxxxxxx"
+# 戦略から開始
+@strategy-agent 新規プロジェクトの戦略立案を開始
 
-# GitHub Token（オプション）
-export GITHUB_TOKEN="ghp_xxxxxxxxxxxxx"
+# PRDから開始
+@prd-agent docs/strategy/[project]-strategy.md を読み込んでPRD作成
+
+# バックログから開始
+@backlog-agent docs/prd/[project]-prd.md を読み込んでバックログ作成
 ```
 
-### Notion API Key の取得方法
-
-1. https://www.notion.so/my-integrations にアクセス
-2. "New integration"をクリック
-3. 名前を入力（例: AI-DLC）
-4. "Submit"をクリック
-5. "Internal Integration Token"をコピー
-
-### Notion データベースの準備
-
-1. Notion で新しいページを作成
-2. 以下の 3 つのデータベースを作成：
-    - **Projects** (プロジェクト管理)
-    - **Epics** (エピック管理)
-    - **PBIs** (バックログアイテム)
-3. 各データベースで"..."メニュー → "Add connections" → "AI-DLC"を選択
-
-## 2. MCP サーバーの起動確認
+### 企画業務フロー
 
 ```bash
-# uvがインストールされているか確認
-uv --version
+# ② から開始
+@scope-definition-agent docs/input/[project]-business-input.md を読み込んでスコープ定義
 
-# インストールされていない場合
-curl -LsSf https://astral.sh/uv/install.sh | sh
+# ③ から開始
+@value-experience-agent UJMとインセプションデッキを作成
+
+# ⑥ から開始（PRD作成）
+@requirements-agent PRDを作成
+
+# ⑦ から開始（バックログ作成）
+@product-backlog-agent バックログを作成
 ```
 
-Kiro で：
+---
 
-1. Feature Panel（サイドバー）を開く
-2. "MCP Servers"セクションを確認
-3. "notion", "github", "filesystem"が"Connected"になっているか確認
+## トラブルシューティング
 
-## 3. 最初のプロジェクトを作成
+### エージェントが応答しない
 
-### 方法1: Hookから実行（推奨）
+1. Kiroを再起動
+2. `.kiro/agents/`に`.kiro.agent`ファイルがあるか確認
+3. チャットで明示的にエージェントを呼び出す
 
-1. Cmd+Shift+P でコマンドパレットを開く
-2. "Open Kiro Hook UI"を入力
-3. "🚀 新規プロジェクト戦略立案"をクリック
-4. 対話形式でプロジェクト情報を入力
+### ファイルが生成されない
 
-**利用可能なHooks:**
+1. `docs/`ディレクトリが存在するか確認
+2. 必要なサブディレクトリ（`input/`, `scope/`等）が存在するか確認
+3. エージェントのエラーメッセージを確認
 
-- 🚀 新規プロジェクト戦略立案
-- 📊 週次データ分析
-- 🔍 ソースコード解析
-- ➕ 突発タスク追加
-- 🎯 月次戦略レビュー
+### 自動フローが途中で止まる
 
-### 方法2: チャットから実行
+1. 最後に生成されたファイルを確認
+2. 次のステップのHookが有効になっているか確認（Hook UI）
+3. 手動で次のエージェントを呼び出す
 
-Kiroチャットで：
-
-```
-@strategy-agent 新規プロジェクトの戦略立案を開始してください。
-
-プロジェクト名: タスク管理アプリ
-解決したい課題: チームのタスク管理が煩雑で、進捗が見えにくい
-ターゲット: 10-50人規模のスタートアップ
-```
-
-**利用可能なエージェント:**
-
-- `@strategy-agent` - 戦略立案
-- `@prd-agent` - PRD作成
-- `@backlog-agent` - バックログ管理
-- `@analyst-agent` - データ分析
-- `@architect-agent` - ソース解析
-- `@integration-agent` - Notion連携
-
-## 4. 自動フローの確認
-
-以下が自動的に実行されます：
-
-1. ✅ 戦略ドキュメント生成 → `docs/strategy/`
-2. ✅ PRD 生成 → `docs/prd/`
-3. ✅ バックログ生成 → `docs/backlog/`
-4. ✅ PBI JSON 生成 → `docs/pbi/`
-5. ✅ Notion に自動登録
-
-## 5. Notion で確認
-
-Notion のデータベースを開いて、プロジェクト・エピック・PBI が登録されているか確認
-
-## よくある質問
-
-### Q: エージェントが応答しない
-
-A:
-
-1. `.kiro/agents/`フォルダに`.kiro.agent`ファイルがあるか確認
-2. Kiroを再起動
-3. チャットで`@エージェント名`で明示的に呼び出す（例: `@strategy-agent`）
-
-### Q: Notion 連携が失敗する
-
-A:
-
-1. NOTION_API_KEY が正しく設定されているか確認
-2. Notion データベースにインテグレーションが接続されているか確認
-3. MCP サーバーを再起動（Feature Panel → MCP Servers → Reconnect）
-
-### Q: 既存プロジェクトに適用できる？
-
-A: はい。以下のコマンドで既存リポジトリを解析できます：
-
-```
-@architect-agent https://github.com/your-org/your-repo を解析
-```
-
-### Q: Hooksが表示されない
-
-A:
-
-1. `.kiro/hooks/`フォルダに`.kiro.hook`ファイルがあるか確認
-2. Kiroを再起動
-3. コマンドパレット（Cmd+Shift+P） → "Open Kiro Hook UI"で確認
+---
 
 ## 次のステップ
 
-- [README.md](README.md) - 詳細なドキュメント
-- [docs/WORKFLOW.md](docs/WORKFLOW.md) - ワークフロー詳細
-- [docs/EXAMPLES.md](docs/EXAMPLES.md) - 実行例
-- [prompt_sample/戦略立案フレームワーク.md](prompt_sample/戦略立案フレームワーク.md) - 戦略立案の詳細
-- [prompt_sample/prd作成.md](prompt_sample/prd作成.md) - PRD作成の詳細
+- [README.md](README.md) - 全体の機能説明
+- [docs/WORKFLOW.md](docs/WORKFLOW.md) - 詳細なワークフロー
+- [docs/EXAMPLES.md](docs/EXAMPLES.md) - 実例集
 
-## サポート
+---
 
-問題が発生した場合は、以下を確認：
+## よくある質問
 
-1. `.kiro/`フォルダの構造
-2. MCP サーバーの接続状態
-3. 環境変数の設定
-4. Kiro のログ（Output Panel → Kiro）
+### Q: 途中でプロジェクト情報を修正したい
+
+A: 該当するファイル（例: `docs/input/{project}-business-input.md`）を直接編集し、次のエージェントを手動で呼び出してください。
+
+### Q: 複数プロジェクトを同時に進められる？
+
+A: はい。プロジェクト名を変えれば、複数プロジェクトを並行して進められます。
+
+### Q: 戦略立案と企画フローを組み合わせられる？
+
+A: はい。戦略立案で作成した戦略ドキュメントを参照しながら、企画フローを実行することも可能です。
+
+### Q: Notion連携は必須？
+
+A: いいえ。Notion連携なしでも、Markdownファイルとして成果物が生成されます。

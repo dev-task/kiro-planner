@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "🔗 既存プロダクトオンボーディング",
+  "description": "既存プロダクトをAI-DLCに取り込み、戦略・PRD・バックログを逆算生成",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "onboarding-agent",
+    "prompt": "既存プロダクトのオンボーディングを開始します。\n\n# 実行フロー\n\n## ステップ1: 情報収集\n\nユーザーに以下を質問してください：\n\n1. プロダクト名\n2. 既存ドキュメントの有無と場所\n3. GitHubリポジトリURL\n4. Notion DatabaseのURL（あれば）\n5. プロダクトのURL（あれば）\n6. 主要な関係者\n\n## ステップ2: 現状分析\n\n- 既存ドキュメントの読み込み\n- GitHubリポジトリの分析（README、Issue、PR、コード構造）\n- プロダクトの動作確認（URLがあれば）\n- Notionデータベースの分析（あれば）\n\n## ステップ3: 逆算生成\n\n以下を生成：\n\n1. `docs/strategy/{project}-strategy.md`（推定）\n2. `docs/prd/{project}-prd.md`（現状ベース）\n3. `docs/backlog/{project}-backlog.md`（現状 + 未来）\n4. `docs/pbi/{project}-pbi.json`\n\n## ステップ4: ギャップ分析\n\n`docs/onboarding/{project}-gap-analysis.md` を生成\n\n## ステップ5: オンボーディングレポート\n\n`docs/onboarding/{project}-onboarding-report.md` を生成\n\n完了後、@integration-agent を呼び出してNotion統合を実行してください。"
+  }
+}
