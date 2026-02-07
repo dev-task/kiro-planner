@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "📊 週次データ分析",
+  "description": "週次でKPI分析と改善提案を自動生成します。",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "analyst-agent",
+    "prompt": "週次データ分析を実行します。\n\n# 分析内容\n\n1. **主要KPIのトレンド分析**（過去4週間）\n   - 週次推移グラフ\n   - 前週比・前月比\n   - 目標達成率\n\n2. **セグメント別分析**\n   - ユーザー属性別\n   - 行動パターン別\n   - コホート分析\n\n3. **ファネル分析**\n   - 各ステップの転換率\n   - ドロップオフポイント特定\n\n4. **異常検知**\n   - 急激な変化の検出\n   - アラート発行\n\n5. **改善仮説の立案**\n   - データドリブンな仮説\n   - 優先順位付き施策案\n   - 期待効果の定量化\n\n# データソース\n- MCP経由でデータ取得（Google Analytics, Mixpanel等）\n- Notionのプロジェクトデータ\n\n# 出力\n\n1. **分析レポート**: `docs/analysis/{date}-weekly-analysis.md`\n   - KPIサマリー\n   - トレンドグラフ（Mermaid）\n   - インサイト\n   - 改善提案\n\n2. **改善PBI**: `docs/pbi/{date}-improvement-pbi.json`\n   - データドリブンな改善タスク\n   - 優先度付き\n   - 期待効果の定量化\n\n改善PBIは自動的にバックログに追加し、Notionに登録してください。"
+  }
+}

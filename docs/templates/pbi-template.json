@@ -1,0 +1,76 @@
+{
+    "project": {
+        "name": "プロジェクト名",
+        "description": "プロジェクト説明",
+        "status": "Planning",
+        "kgi": "主要目標",
+        "strategyDocUrl": "docs/strategy/{project-name}-strategy.md",
+        "prdDocUrl": "docs/prd/{project-name}-prd.md"
+    },
+    "epics": [
+        {
+            "id": "EPIC-001",
+            "title": "エピック名",
+            "description": "エピック説明",
+            "priority": "High",
+            "status": "To Do",
+            "stories": ["PBI-001", "PBI-002"]
+        }
+    ],
+    "pbis": [
+        {
+            "id": "PBI-001",
+            "type": "User Story",
+            "title": "ユーザーとして、〇〇したい、なぜなら〇〇だから",
+            "description": "詳細説明",
+            "acceptanceCriteria": ["Given ユーザーが〇〇の状態で", "When 〇〇を実行すると", "Then 〇〇となる"],
+            "priority": "High",
+            "storyPoints": 5,
+            "epic": "EPIC-001",
+            "status": "To Do",
+            "assignee": null,
+            "sprint": null,
+            "dependencies": [],
+            "tags": ["feature", "frontend"],
+            "tasks": [
+                {
+                    "id": "TASK-001",
+                    "title": "タスク名",
+                    "description": "タスク説明",
+                    "estimatedHours": 4,
+                    "status": "To Do"
+                }
+            ]
+        },
+        {
+            "id": "PBI-002",
+            "type": "Task",
+            "title": "技術タスク名",
+            "description": "技術的な作業内容",
+            "acceptanceCriteria": ["完了条件1", "完了条件2"],
+            "priority": "Medium",
+            "storyPoints": 3,
+            "epic": "EPIC-001",
+            "status": "To Do",
+            "assignee": null,
+            "sprint": null,
+            "dependencies": ["PBI-001"],
+            "tags": ["technical", "backend"]
+        },
+        {
+            "id": "PBI-003",
+            "type": "Bug",
+            "title": "バグ名",
+            "description": "バグの詳細と再現手順",
+            "acceptanceCriteria": ["バグが修正されている", "テストケースが追加されている"],
+            "priority": "Critical",
+            "storyPoints": 2,
+            "epic": null,
+            "status": "To Do",
+            "assignee": null,
+            "sprint": null,
+            "dependencies": [],
+            "tags": ["bug", "hotfix"]
+        }
+    ]
+}

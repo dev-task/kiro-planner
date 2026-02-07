@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "🔍 ソースコード解析",
+  "description": "GitHubリポジトリまたはローカルソースを解析し、技術仕様書と改善提案を生成します。",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "architect-agent",
+    "prompt": "ソースコード解析を実行します。\n\n# 解析対象\nリポジトリURL or ローカルパス: {ユーザーに入力を求める}\n\n# 実行内容\n\n1. **アーキテクチャ解析**\n   - コンポーネント構成\n   - 依存関係マップ\n   - データフロー\n   - システム構成図（Mermaid）\n\n2. **コード品質メトリクス計測**\n   - Cyclomatic Complexity（循環的複雑度）\n   - 重複コード率\n   - テストカバレッジ\n   - コード行数・ファイル数\n\n3. **技術的負債の検出**\n   - セキュリティ脆弱性（Critical/High/Medium/Low）\n   - パフォーマンスボトルネック\n   - 保守性の問題\n   - コードスタイル違反\n\n4. **セキュリティレビュー**\n   - 脆弱性スキャン\n   - 依存関係の脆弱性\n   - セキュリティベストプラクティス\n\n5. **パフォーマンスボトルネック特定**\n   - 遅いクエリ\n   - メモリリーク\n   - N+1問題\n\n# 出力\n\n1. **技術仕様書**: `docs/specs/{project-name}-tech-spec.md`\n   - アーキテクチャ概要\n   - コンポーネント図\n   - API仕様\n   - データモデル\n\n2. **ソース解析レポート**: `docs/analysis/{project-name}-code-analysis.md`\n   - コード品質メトリクス\n   - 技術的負債リスト\n   - リファクタリング提案\n\n3. **アーキテクチャ図**（Mermaid）\n   - システム構成図\n   - ER図\n   - シーケンス図\n\n4. **技術的負債PBI**: `docs/pbi/{date}-tech-debt-pbi.json`\n   - 優先順位付き（Critical → High → Medium → Low）\n\n技術的負債PBIは優先順位付けして、自動的にバックログに追加してください。"
+  }
+}

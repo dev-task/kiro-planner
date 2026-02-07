@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Notion自動同期",
+  "description": "バックログとPBIが生成されたら、自動的にNotionに登録します。",
+  "version": "1",
+  "when": {
+    "type": "agentExecutionComplete"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "integration-agent",
+    "prompt": "バックログとPBIが生成されました。Notionに登録します。\n\n# 入力\n- PBI JSON: `docs/pbi/{project-name}-pbi.json`\n- プロダクトバックログ: `docs/backlog/{project-name}-backlog.md`\n\n# 実行内容\n\n1. **Notionプロジェクトデータベース**にプロジェクト登録\n   - プロジェクト名\n   - ステータス: Planning\n   - 戦略ドキュメントURL\n   - PRD URL\n   - KGI\n\n2. **Notionエピックデータベース**にエピック登録\n   - エピック名\n   - プロジェクト（Relation）\n   - 優先度\n   - ステータス\n\n3. **Notion PBIデータベース**に各PBI登録\n   - タイトル\n   - タイプ（User Story/Task/Bug）\n   - エピック（Relation）\n   - ストーリーポイント\n   - 優先度\n   - ステータス: To Do\n   - 受け入れ基準\n\n4. **リレーション設定**\n   - プロジェクト ← エピック ← PBI\n\n# 出力\n登録完了レポートを生成し、登録されたアイテム数を報告してください。\n\n完了メッセージ: 「Notion登録が完了しました。プロジェクト: 1件、エピック: X件、PBI: Y件を登録しました。」"
+  }
+}

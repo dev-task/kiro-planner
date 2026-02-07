@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "📝 フィードバック分析",
+  "description": "ユーザーフィードバック、アンケート結果、レビューを分析し、改善PBIを自動生成します。",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "feedback-agent",
+    "prompt": "ユーザーフィードバック分析を実行します。\n\n# フィードバックソース\n\n以下のソースからフィードバックを収集・分析してください：\n\n1. **ユーザーアンケート結果**\n   - 保存先: `docs/feedback/surveys/`\n   - フォーマット: CSV, JSON, Markdown\n\n2. **アプリ内フィードバック**\n   - 保存先: `docs/feedback/in-app/`\n\n3. **カスタマーサポート問い合わせ**\n   - 保存先: `docs/feedback/support/`\n\n4. **レビュー・コメント**\n   - App Store/Google Play\n   - SNS上の言及\n   - 保存先: `docs/feedback/reviews/`\n\n5. **ユーザーインタビュー記録**\n   - 保存先: `docs/feedback/interviews/`\n\n# 分析内容\n\n## 1. 定性分析\n- テキストマイニング\n- 感情分析（ポジティブ/ネガティブ/ニュートラル）\n- トピック抽出\n- ペインポイント特定\n- 要望の分類（機能追加/改善/バグ修正）\n\n## 2. 定量分析\n- フィードバック頻度\n- 感情スコア分布\n- トピック別集計\n- 緊急度・重要度マトリクス\n- ユーザーセグメント別分析\n\n## 3. インサイト抽出\n- 最も多い要望TOP5\n- 最も深刻なペインポイントTOP3\n- 新たなユーザーニーズの発見\n- プロダクト方向性の乖離検知\n- Quick Win機会の発見\n\n# 出力\n\n1. **フィードバック分析レポート**: `docs/feedback/{date}-feedback-analysis.md`\n   - Executive Summary\n   - フィードバック概要\n   - 感情分析結果\n   - トピック別分析\n   - ペインポイントTOP5\n   - 要望TOP5\n   - インサイト\n   - 改善提案\n\n2. **改善PBI**: `docs/pbi/{date}-feedback-pbi.json`\n   - ユーザーの声に基づくPBI\n   - 優先順位付き\n   - 期待効果の定量化\n   - 実際のユーザーの声（引用）\n\n3. **方向性変更アラート**（必要に応じて）: `docs/feedback/{date}-direction-change-alert.md`\n\n# 次のアクション\n\n1. 改善PBIをバックログに追加\n2. Notionに登録\n3. 方向性変更が検知された場合、ピボットエージェントを起動\n\n完了後、「フィードバック分析が完了しました。改善PBI: X件を生成しました。」と報告してください。"
+  }
+}

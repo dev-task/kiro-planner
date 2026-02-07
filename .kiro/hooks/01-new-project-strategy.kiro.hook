@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "🚀 新規プロジェクト戦略立案",
+  "description": "新規プロジェクトの戦略立案を開始します。4階層フレームワークに基づいて市場分析から実行計画まで一気通貫で作成します。",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "agent": "strategy-agent",
+    "prompt": "新規プロジェクトの戦略立案を開始します。\n\n# 参照ドキュメント\n#[[file:prompt_sample/戦略立案フレームワーク.md]]\n#[[file:prompt_sample/戦略的4階層プロダクト.md]]\n\n# 実行内容\n\n1. **Initial Setup**: 検討しているプロダクトの概要（現時点での仮説）を聞いてください\n\n2. **4-Layer Deep Dive**:\n   - Layer 1: Core (Philosophy & Strategy)\n   - Layer 2: Why (Market & User Psychology)\n   - Layer 3: What (Experience & Economics)\n   - Layer 4: How (Execution & Feasibility)\n   \n   各レイヤーで一度に「1つの鋭い質問」だけを投げかけ、深堀りしてください。\n\n3. **出力**: 戦略ドキュメントを `docs/strategy/{project-name}-strategy.md` に保存\n\n完了後、「戦略ドキュメントが完成しました。次はPRD作成フェーズに移行します。」と明示してください。"
+  }
+}

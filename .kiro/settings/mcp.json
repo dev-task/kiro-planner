@@ -1,0 +1,28 @@
+{
+    "mcpServers": {
+        "notion": {
+            "command": "uvx",
+            "args": ["mcp-server-notion"],
+            "env": {
+                "NOTION_API_KEY": "${NOTION_API_KEY}"
+            },
+            "disabled": false,
+            "autoApprove": ["notion_search", "notion_read_page", "notion_create_page", "notion_update_page"]
+        },
+        "github": {
+            "command": "uvx",
+            "args": ["mcp-server-github"],
+            "env": {
+                "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+            },
+            "disabled": false,
+            "autoApprove": ["github_list_repos", "github_get_file_contents", "github_search_code", "github_create_issue"]
+        },
+        "filesystem": {
+            "command": "uvx",
+            "args": ["mcp-server-filesystem", "--allowed-directories", "${WORKSPACE_ROOT}"],
+            "disabled": false,
+            "autoApprove": ["read_file", "list_directory"]
+        }
+    }
+}
