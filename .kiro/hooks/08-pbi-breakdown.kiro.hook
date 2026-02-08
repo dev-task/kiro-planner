@@ -4,12 +4,15 @@
   "description": "開発チームが迷わず着手できる状態にPBIを分割・詳細化",
   "version": "1",
   "when": {
-    "type": "fileCreated",
-    "patterns": ["docs/backlog/*-backlog.md"]
+    "type": "fileEdited",
+    "patterns": [
+      "docs/backlog/*-backlog.md"
+    ]
   },
   "then": {
     "type": "askAgent",
-    "agent": "pbi-agent",
     "prompt": "プロダクトバックログ作成が完了しました。最終ステップとしてPBI粒度への分解を開始してください。\n\n各バックログアイテムについて以下を付与してください：\n1. 背景（なぜ必要か）\n2. 受入条件（Doneの定義）\n3. 業務ルール・制約\n4. 依存関係\n5. 技術メモ\n\n完了したら以下を作成してください：\n- `docs/pbi/{project-name}-pbi.md`（Markdown形式）\n- `docs/pbi/{project-name}-pbi.json`（Notion API用）\n\nその後、@integration-agent を呼び出してNotion登録を依頼してください。"
-  }
+  },
+  "workspaceFolderName": "kiro-planner",
+  "shortName": "08-pbi-breakdown"
 }

@@ -4,12 +4,15 @@
   "description": "プロダクト4階層整理、やる/やらないの決定、フェーズ分割を実行",
   "version": "1",
   "when": {
-    "type": "fileCreated",
-    "patterns": ["docs/input/*-business-input.md"]
+    "type": "fileEdited",
+    "patterns": [
+      "docs/input/*-business-input.md"
+    ]
   },
   "then": {
     "type": "askAgent",
-    "agent": "scope-definition-agent",
     "prompt": "事業・課題インプットが完了しました。次のステップとして企画スコープ定義を開始してください。\n\n作成されたファイルを読み込み、以下を整理してください：\n1. プロダクト4階層（Core/Why/What/How）\n2. 対象とする価値・機能群\n3. フェーズ分割（MVP/v1/v2）\n4. 今回作らないものリスト\n\n完了したら `docs/scope/{project-name}-scope.md` を作成してください。"
-  }
+  },
+  "workspaceFolderName": "kiro-planner",
+  "shortName": "02-scope-definition"
 }

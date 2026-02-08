@@ -4,12 +4,15 @@
   "description": "業務ロジックをシステム要件に変換、PRD作成を実行",
   "version": "1",
   "when": {
-    "type": "fileCreated",
-    "patterns": ["docs/logic/*-business-logic.md"]
+    "type": "fileEdited",
+    "patterns": [
+      "docs/logic/*-business-logic.md"
+    ]
   },
   "then": {
     "type": "askAgent",
-    "agent": "requirements-agent",
     "prompt": "業務ロジック整理が完了しました。次のステップとして要件レベルへの翻訳を開始してください。\n\n以下を実施してください：\n1. 業務ロジック → システム要件への変換\n2. 必要な画面・API・データの整理\n3. 非機能要件（性能・権限・ログ）整理\n4. MVPで実装する範囲の確定\n5. PRD作成\n\n完了したら `docs/prd/{project-name}-prd.md` を作成してください。"
-  }
+  },
+  "workspaceFolderName": "kiro-planner",
+  "shortName": "06-requirements"
 }
